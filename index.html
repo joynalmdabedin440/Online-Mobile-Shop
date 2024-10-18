@@ -7,17 +7,42 @@
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Mobile Dokan</title>
+    <title>Mobile </title>
 </head>
 
 <body>
     <header>
-        <h1>Hello I am json</h1>
+        <h1 class="text-xl m-5 font-bold">Searching Phone</h1>
+
+       
     </header>
 
-    <div>
+    <main class="container mx-auto my-10">
+        <div class="my-5">
+            <input id="input-text" type="text" placeholder="Search" class="input input-bordered w-full max-w-xs" />
+            <button onclick="searchBtn()" id="input-btn" class="btn btn-primary">Search</button>
+        </div>
+        <div id="loader" class=" hidden text-center p-10">
+            <span class="loading loading-spinner text-red-500 w-10"></span>
+        </div>
+        <section>
 
-    </div>
+            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+
+            </div>
+
+            <div class="flex justify-center my-10">
+                <button id="load-more-btn" class="btn btn-primary hidden" >
+                    Load More
+                </button>
+            </div>
+
+
+        </section>
+
+
+    </main>
 
 
     <script src="./script.js"></script>
