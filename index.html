@@ -14,7 +14,7 @@
     <header>
         <h1 class="text-xl m-5 font-bold">Searching Phone</h1>
 
-       
+
     </header>
 
     <main class="container mx-auto my-10">
@@ -32,8 +32,8 @@
 
             </div>
 
-            <div class="flex justify-center my-10">
-                <button id="load-more-btn" class="btn btn-primary hidden" >
+            <div id="load-more-btn" class=" text-center my-10 hidden">
+                <button onclick="loadMoreBtn()" class="btn btn-primary ">
                     Load More
                 </button>
             </div>
@@ -43,6 +43,23 @@
 
 
     </main>
+
+    <!-- You can open the modal using ID.showModal() method -->
+    
+    <dialog id="phoneDetails" class="modal">
+        <div id="show-phone-details" class="modal-box w-11/12 max-w-5xl text-center ">
+          
+            <div id="close-btn"  class="modal-action">
+                <form method="dialog">
+                    
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+   
+
 
 
     <script src="./script.js"></script>
