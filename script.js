@@ -1,4 +1,4 @@
-const loadData = async (searchText, isLoadMore) => {
+const loadData = async (searchText="samsung", isLoadMore) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
 
   const jsonData = await res.json()
@@ -16,6 +16,9 @@ const displayData = (data, isLoadMore) => {
   const phoneContainer = document.getElementById('phone-container');
   phoneContainer.innerHTML = '';
   const loadMore = document.getElementById('load-more-btn')
+  if (data.length === 0) {
+    alert("No phone found")
+  }
 
   if (data.length > 10 && !isLoadMore) {
 
@@ -92,16 +95,13 @@ const dataLoader = (isLoading) => {
 
 const showMoreDetails = async (id) => {
 
+  const showDetailsContainer = document.getElementById('show-phone-details')
 
   const data = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
   const phoneData = await data.json()
   const phoneDetails = phoneData.data;
+
   
-
-
-
-  const showDetailsContainer = document.getElementById('show-phone-details')
-
   const closeBtn = document.getElementById('close-btn')
 
   const div = document.createElement('div')
@@ -122,18 +122,19 @@ const showMoreDetails = async (id) => {
 
     <p><span class="font-bold">Release date:</span>${phoneDetails.releaseDate}</p>
     <p><span class="font-bold">Brand:</span>${phoneDetails.brand}</p>
-    <p><span class="font-bold">GPS:</span>${phoneDetails.others?.GPS}</p>
+    <p><span class="font-bold">GPS:</span>${phoneDetails.others?.GPS || "This feature  is not available"}</p>
+
     
   
   `
+
+
   showDetailsContainer.insertBefore(div, closeBtn)
 
 
-
-
-
-
 }
+
+
 
 const loadMoreBtn = () => {
   searchBtn(true)
@@ -141,3 +142,4 @@ const loadMoreBtn = () => {
 
 }
 
+loadData()
